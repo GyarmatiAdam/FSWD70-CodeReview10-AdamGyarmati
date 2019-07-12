@@ -2,7 +2,7 @@
 /**
  * @author Adam Gyarmati
  */
-    require_once('dbconnection.php');
+    require_once('actions/dbconnection.php');
 
 ?>
 
@@ -30,14 +30,14 @@
             <div class="col-sm-8">
     <?php
     /**
-     * @connection PDO
+     * @connection mysqli
      */
-        try
-        {
-            $database = new Connection();
-            $db = $database->openConnection();
-            $sql = "SELECT * FROM library " ;
-            foreach ($db->query($sql) as $row) {     
+
+        $sql = "SELECT * FROM library " ;
+        $result = $connect->query($sql);
+     
+            if($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
     ?>
     <!--tables-->
     <table class="table table-striped table-dark">
@@ -59,18 +59,14 @@
             <button type='submit' name='delete' class='btn btn-primary'>Delete</button>
             <button type='submit' name='update' class='btn btn-primary'>Update</button>
             </th></tr>";
+            }
+        } else  {
+            echo  "<tr><td colspan='5'><center>No Data Avaliable</center></td></tr>";
+        }
 
     ?>
     </tbody>
-    </table>
-    <?php
-            }
-        }
-        catch (PDOException $e)
-        {
-            echo "There is some problem in connection: " . $e->getMessage();
-        }
-    ?>
+
             </div>
             <div class="col-sm-2">
 
