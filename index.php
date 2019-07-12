@@ -1,51 +1,83 @@
 <?php
+/**
+ * @author Adam Gyarmati
+ */
     require_once('dbconnection.php');
+
 ?>
 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <title>Hello, world!</title>
+    <title>The Big Library</title>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-        <a class="nav-item nav-link" href="#">BOOK</a>
-        <a class="nav-item nav-link" href="#">CD</a>
-        <a class="nav-item nav-link" href="#">DVD</a>
-        </div>
-    </div>
-    </nav>
-    <h1>The Big Library</h1>
-
+  <body style="margin-top: 4rem">
+    <!--add navbar to the page-->
     <?php
-
+        require_once('navbar.php');
+    ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2 ">
+            <h3 class="position-fixed" style="margin-top: 4rem, margin-left: 0rem"></h3>
+            </div>
+            <div class="col-sm-8">
+    <?php
+    /**
+     * @connection PDO
+     */
         try
         {
             $database = new Connection();
             $db = $database->openConnection();
             $sql = "SELECT * FROM library " ;
-            foreach ($db->query($sql) as $row) {
-            echo " ID: ".$row['library_id'] . "<br>";
-            echo " Title: ".$row['title'] . "<br>";
-            echo " ISBN: ".$row['isbn_code'] . "<br>";
-            echo " Type: ".$row['lib_type'] . "<br>";
+            foreach ($db->query($sql) as $row) {     
+    ?>
+    <!--tables-->
+    <table class="table table-striped table-dark">
+    <tbody>
+    <thead>
+        <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">ISBN</th>
+        <th scope="col">Type</th>
+        </tr>
+    </thead>
+    <?php
+
+            echo "<tr><th scope='row'>".$row['library_id'] . "</th>";
+            echo "<th scope='row'>".$row['title'] . "</th>";
+            echo "<th scope='row'>".$row['isbn_code'] . "</th>";
+            echo "<th scope='row'>".$row['lib_type'] . "
+            <button type='submit' name='delete' class='btn btn-primary'>Delete</button>
+            <button type='submit' name='update' class='btn btn-primary'>Update</button>
+            </th></tr>";
+
+    ?>
+    </tbody>
+    </table>
+    <?php
             }
         }
         catch (PDOException $e)
         {
             echo "There is some problem in connection: " . $e->getMessage();
         }
-
     ?>
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
