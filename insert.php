@@ -20,16 +20,27 @@
         //$image =isset($_GET['fileToUpload']);
 
        
-            // inserting data into create table using prepare statement to prevent from sql injections
-            //$stm = $db->prepare("INSERT INTO library (title, lib_image, isbn_code, lib_description, publish_date, lib_type) VALUES ('$title', '$image' , '$isbn', '$description', '$publish_date', '$publish_type')");
-            // inserting a record
-            $stm = $db->prepare("INSERT INTO library (fk_author_id, fk_media_status_id, title, isbn_code, lib_description, publish_date, lib_type) VALUES (:fk_author_id, :fk_media_id, :title, :isbn, :description, :publish_date, :publish_type)");
-            $stm->execute(array(':fk_author_id'=> $author, ':fk_media_id'=> $media, ':title' => $title, ':isbn' => $isbn, ':description'=> $description , ':publish_date' => $publish_date, ':publish_type' => $publish_type));
-            //$stm = ("INSERT INTO library (fk_author_id, fk_media_status_id, title, isbn_code, lib_description, publish_date, lib_type) VALUES (:fk_author_id, :fk_media_id, :title, :isbn, :description, :publish_date, :publish_type)");
-            //$stm = $db->prepare($stm);
-            //$stm->execute(array( $author,  $media, $title,  $isbn,  $description ,  $publish_date,  $publish_type));
 
-                    
+            $stm = $db->prepare("INSERT INTO library (fk_author_id, 
+            fk_media_status_id,
+             title, isbn_code, 
+             lib_description, 
+             publish_date, 
+             lib_type) 
+             VALUES (:fk_author_id, 
+             :fk_media_id, 
+             :title, 
+             :isbn, 
+             :description, 
+             :publish_date, 
+             :publish_type)");
+            $stm->execute(array(':fk_author_id'=> $author, 
+            ':fk_media_id'=> $media, 
+            ':title' => $title, 
+            ':isbn' => $isbn, 
+            ':description'=> $description , 
+            ':publish_date' => $publish_date, 
+            ':publish_type' => $publish_type));
 
             echo "New record created successfully";
 
