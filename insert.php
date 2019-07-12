@@ -34,13 +34,13 @@
              :description, 
              :publish_date, 
              :publish_type)");
-            $stm->execute(array(':fk_author_id'=> $author, 
-            ':fk_media_id'=> $media, 
-            ':title' => $title, 
-            ':isbn' => $isbn, 
-            ':description'=> $description , 
-            ':publish_date' => $publish_date, 
-            ':publish_type' => $publish_type));
+            $stm->execute(array(':fk_author_id'=> 2, 
+            ':fk_media_id'=> 2, 
+            ':title' => `$title`, 
+            ':isbn' => `$isbn`, 
+            ':description'=> `$description `, 
+            ':publish_date' => `$publish_date`, 
+            ':publish_type' => `$publish_type`));
 
             echo "New record created successfully";
 
