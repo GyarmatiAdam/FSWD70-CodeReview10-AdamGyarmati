@@ -3,90 +3,74 @@
  * @author Adam Gyarmati
  */
     require_once('dbconnection.php');
-//if ( isset($_POST['insert']) ) { } 
-    try
-    {
-        $database = new Connection();
-        $db = $database->openConnection();
-
-
-        $title = isset($_post['title']);
-        $isbn = isset($_post['isbn']);
-        $description = isset($_post['description']);
-        $publish_date = isset($_post['publish_date']);
-        $publish_type = isset($_post['publish_type']);
-        $author = isset($_post['author_id']);
-        $media = isset($_post['media_id']);
-        //$image =isset($_GET['fileToUpload']);
-
-       
-
-            $stm = $db->prepare("INSERT INTO library (fk_author_id, 
-            fk_media_status_id,
-             title, isbn_code, 
-             lib_description, 
-             publish_date, 
-             lib_type) 
-             VALUES (:fk_author_id, 
-             :fk_media_id, 
-             :title, 
-             :isbn, 
-             :description, 
-             :publish_date, 
-             :publish_type)");
-            $stm->execute(array(':fk_author_id'=> 2, 
-            ':fk_media_id'=> 2, 
-            ':title' => `$title`, 
-            ':isbn' => `$isbn`, 
-            ':description'=> `$description `, 
-            ':publish_date' => `$publish_date`, 
-            ':publish_type' => `$publish_type`));
-
-            echo "New record created successfully";
-
-        
-       }
-           catch (PDOException $e)
-            {
-                echo "There is some problem in connection: " . $e->getMessage();
-            }
-/*
-
-try {
 
     $database = new Connection();
-    $con = $database->openConnection();
+    $db = $database->openConnection();
 
-    // prepare sql and bind parameters
-    $stmt = $con->prepare("INSERT INTO INSERT INTO library (fk_author_id, fk_media_status_id, title, isbn_code, lib_description, publish_date, lib_type) VALUES (:fk_author_id, :fk_media_id, :title, :isbn, :description, :publish_date, :publish_type)");
-    $stmt->bindParam('fk_author_id', $author);
-    $stmt->bindParam('fk_media_status_id',  $media);
-    $stmt->bindParam('title', $title);
-    $stmt->bindParam('isbn_code', $isbn);
-    $stmt->bindParam('lib_description', $description);
-    $stmt->bindParam('publish_date', $publish_date);
-    $stmt->bindParam('publish_type', $publish_type);
+    $title = "";
+    $isbn = "";
+    $description = "";
+    $publish_date = "";
+    $publish_type = "";
+    $author = "";
+    $media = "";
+
+if ( isset($_GET['submit']) ) {  
+
+try
+{
 
 
-    $title = isset($_post['title']);
-    $isbn = isset($_post['isbn']);
-    $description = isset($_post['description']);
-    $publish_date = isset($_post['publish_date']);
-    $publish_type = isset($_post['publish_type']);
-    $author = isset($_post['author_id']);
-    $media = isset($_post['media_id']);
-    
-    $stmt->execute();
-    
-    echo "New records created successfully";
-    }
-    catch(PDOException $e)
-    {
-    echo "Error: " . $e->getMessage();
-    }
-    $con = null;
- 
-*/ 
+
+    $title = $_GET['title'];
+    $isbn = $_GET['isbn'];
+    $description = $_GET['description'];
+    $publish_date = $_GET['publish_date'];
+    $publish_type = $_GET['publish_type'];
+    $author = $_GET['author_id'];
+    $media = $_GET['media_id'];
+
+   
+        
+
+        $stm = $db->prepare("INSERT INTO library (fk_author_id, 
+        fk_media_status_id,
+         title, isbn_code, 
+         lib_description, 
+         publish_date, 
+         lib_type) 
+         VALUES (:fk_author_id, 
+         :fk_media_id, 
+         :title, 
+         :isbn, 
+         :description, 
+         :publish_date, 
+         :publish_type)");
+        $stm->execute(array(':fk_author_id'=> 2, 
+        ':fk_media_id'=> 2, 
+        ':title' => $title, 
+        ':isbn' => $isbn, 
+        ':description'=> $description , 
+        ':publish_date' => $publish_date, 
+        ':publish_type' => $publish_type));
+
+   
+        
+        // if($stm == true) {
+        //     header( "Location: insert.php");
+        //     echo "New record created successfully";
+        // } else {
+        //     echo "Try again..." ;
+        // }
+
+        }
+        catch (PDOException $e)
+        {
+            echo "There is some problem in connection: " . $e->getMessage();
+        }
+
+}
+
 ?>
 
 <!doctype html>
@@ -112,7 +96,7 @@ try {
             <h3 class="position-fixed" style="margin-top: 5rem, margin-left: 0rem"></h3>
             </div>
             <div class="col-sm-8">
-            <form method="post" enctype="multipart/form-data"   autocomplete="off">
+            <form method="GET" enctype="multipart/form-data" action="dbconnection.php"  autocomplete="off">
                 <div class="form-group">
                     <input type="number" class="form-control" name="author_id" placeholder="Author"><br>
                     <input type="number" class="form-control" name="media_id" placeholder="Media"><br>
@@ -123,11 +107,14 @@ try {
                     <input type="text" class="form-control" name="publish_type" placeholder="Type BOOK/DVD/CD"><hr>
                     <input type="file" name="fileToUpload" id="fileToUpload">
 
-                <button type="insert" class="btn btn-primary">Insert</button>
+                <button type="submit" class="btn btn-primary">Insert</button>
                 </form>
 
             </div>
             <div class="col-sm-2">
+            <?php
+               
+            ?>
             
             </div>
         </div>
@@ -141,3 +128,15 @@ try {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
+<?php
+    $title = "";
+    $isbn = "";
+    $description = "";
+    $publish_date = "";
+    $publish_type = "";
+    $author = "";
+    $media = "";
+    $database->closeConnection();
+    
+?>
+            
