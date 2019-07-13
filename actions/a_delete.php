@@ -1,11 +1,11 @@
 <?php 
-/** has server-side processing for user update action. */
+
 require_once 'db_connect.php';
 
-if ($_POST) {
-   $id = $_POST['id'];
+if ($_GET) {
+   $library = isset($_GET['library_id']);
 
-   $sql = "DELETE FROM user WHERE id = {$id}";
+   $sql = "DELETE FROM library WHERE library_id = {$library};";
     if($connect->query($sql) === TRUE) {
        echo "<p>Successfully deleted!!</p>" ;
        echo "<a href='../index.php'><button type='button'>Back</button></a>";

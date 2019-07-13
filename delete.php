@@ -1,15 +1,17 @@
 <?php 
-/** has an HTML form for processing data to the server-side file. */
+
 require_once 'actions/db_connect.php';
 
-if ($_GET['id']) {
-   $id = $_GET['id'];
 
-   $sql = "SELECT * FROM user WHERE id = {$id}" ;
+if (isset($_GET['library_id'])) {
+   $library = isset($_GET['library_id']);
+
+   $sql = "SELECT * FROM library WHERE library_id = {$library}" ;
    $result = $connect->query($sql);
-   $data = $result->fetch_assoc();
 
+   $data = $result->fetch_assoc();
    $connect->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +22,9 @@ if ($_GET['id']) {
 <body>
 
 <h3>Do you really want to delete this user?</h3>
-<form action ="actions/a_delete.php" method="post">
-
-   <input type="hidden" name= "id" value="<?php echo $data['id'] ?>" />
-   <button type="submit">Yes, delete it!</button >
+<form action ="actions/a_delete.php" method="GET">
+   <input type="hidden" name= "library_id" value="<?php echo isset($data['library_id']) ?>" />
+   <button type="delete">Yes, delete it!</button >
    <a href="index.php"><button type="button">No, go back!</button ></a>
 </form>
 
@@ -31,5 +32,7 @@ if ($_GET['id']) {
 </html>
 
 <?php
-}
+   } else  {
+      echo  "<tr><td colspan='5'><center>No Data Avaliable</center></td></tr>";
+   }
 ?>

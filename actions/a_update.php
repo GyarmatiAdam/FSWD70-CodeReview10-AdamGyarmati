@@ -1,16 +1,17 @@
 <?php 
+// a_update.php
 require_once 'db_connect.php';
 
 
-if ($_POST['update']) {
-     $title = $_POST['title'];
-     $isbn = $_POST['isbn'];
-     $description = $_POST['description'];
-     $publish_date = $_POST['publish_date'];
-     $publish_type = $_POST['publish_type'];
-     $author = $_POST['author_id'];
-     $media = $_POST['media_id'];
-     $library = $_POST['library_id'];
+if ($_GET) {
+     $title = $_GET['title'];
+     $isbn = $_GET['isbn'];
+     $description = $_GET['description'];
+     $publish_date = $_GET['publish_date'];
+     $publish_type = $_GET['publish_type'];
+     $author = $_GET['author_id'];
+     $media = $_GET['media_id'];
+     $library = $_GET['library_id'];
   
      $sql = "UPDATE library SET (
       fk_author_id = $author,

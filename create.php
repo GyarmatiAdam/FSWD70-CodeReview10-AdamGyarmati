@@ -1,4 +1,3 @@
-<!--File create.php (create.php) contains an HTML form from which user’s input data will be passed to the server-side and data will be inserted in the database.-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +6,7 @@
 <body>
 
 <fieldset >
-<form method="POST" enctype="multipart/form-data" action="actions/a_create.php"  autocomplete="off">
+<form method="GET" enctype="multipart/form-data" action="actions/a_create.php"  autocomplete="off">
                 <div class="form-group">
                     <input type="number" class="form-control" name="author_id" placeholder="Author"><br>
                     <input type="number" class="form-control" name="media_id" placeholder="Media"><br>
@@ -19,6 +18,7 @@
                     <input type="file" name="fileToUpload" id="fileToUpload">
 
                     <button type="submit" name="insert" class="btn btn-primary">Insert</button>
+                </div>
                 </form>
 
 </fieldset >
