@@ -26,7 +26,9 @@
     /**
      * @connection mysqli
      */
-        $sql = "SELECT * FROM library " ;
+        $sql = "SELECT * FROM library 
+        RIGHT JOIN authors
+        ON library.fk_author_id = authors.author_id;" ;
         $result = $connect->query($sql);
      
             if($result->num_rows > 0) {
@@ -50,15 +52,15 @@
     </thead>
     <tbody>
     <?php
-            echo "<tr><th scope='row'>".$row['library_id'] . "</th>";
-            echo "<td scope='row'>".$row['fk_author_id'] . "</td>";
+            echo "<tr><th scope='1'>".$row['library_id'] . "</th>";
+            echo "<td scope='row'>".$row['author_firstName'] . "<br>".$row['author_lastName'] . "</td>";
             echo "<td scope='row'>".$row['fk_media_status_id'] . "</td>";
             echo "<td scope='row'>".$row['title'] . "</td>";
             echo "<td scope='row'>".$row['isbn_code'] . "</td>";
             echo "<td scope='row'>".$row['publish_date'] . "</td>";
             echo "<td scope='row'>".$row['lib_type'] . "</td></th></tr>";
             echo "<tr><th colspan='8'>Description</th></tr>
-            <tr><td colspan='8'>".$row['lib_description'] . "</td></tr>
+            <tr class='text-justify'><td colspan='8'>".$row['lib_description'] . "</td></tr>
             
             <tr><td>
             <div class='btn-group mr-2' role='group'>

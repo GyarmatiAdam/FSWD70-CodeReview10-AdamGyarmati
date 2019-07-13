@@ -1,15 +1,15 @@
 <?php 
 
 require_once 'actions/db_connect.php';
-if (isset($_GET['library_id'])) {
+// if (isset($_GET['library_id'])) {
    
-   $library = isset($_GET['library_id']);
+//    $library = isset($_GET['library_id']);
    
-   $sql = "SELECT * FROM library WHERE library_id = {$library}" ;
-   $result = $connect->query($sql);
-   $data = $result->fetch_assoc();
+//    $sql = "SELECT * FROM library WHERE library_id = {$library}" ;
+//    $result = $connect->query($sql);
+//    $data = $result->fetch_assoc();
    
-   $connect->close();
+//    $connect->close();
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ if (isset($_GET['library_id'])) {
 <form action ="actions/a_delete.php" method="GET">
    <input type="hidden" name= "library_id" value="<?php echo isset($data['library_id']) ?>" />
    <button type="delete">Yes, delete it!</button >
-   <a href="index.php"><button type="button">No, go back!</button ></a>
+   <a href="index.php"><button type="button" value="delete">No, go back!</button ></a>
 
 </form>
 </div>
@@ -52,7 +52,7 @@ if (isset($_GET['library_id'])) {
 </html>
 
    <?php
-} else  {
-   echo  "<tr><td colspan='5'><center>No Data Avaliable</center></td></tr>";
- }
+// } else  {
+//    echo  "<tr><td colspan='5'><center>No Data Avaliable</center></td></tr>";
+//  }
    ?>

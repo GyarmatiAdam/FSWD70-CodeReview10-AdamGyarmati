@@ -18,24 +18,6 @@
         <a class="nav-item nav-link" href="#">DVD</a>
         <a class="nav-item nav-link" href="../create.php">INSERT DATA</a>
         </div>
-       <!--dropdown menu-->
-    <li class="nav-item dropdown">
-        <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publisher</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Big Book Publisher</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Small Book Publisher</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Rich CD Publisher</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Poor CD Publisher</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Amazing DVD Publisher</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">General DVD Publisher</a>
-        </div>
-    </li>
-   
     </div>
         <h3>The Big Library</h3>
     </nav>

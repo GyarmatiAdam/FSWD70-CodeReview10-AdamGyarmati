@@ -9,19 +9,20 @@ if (isset($_GET['insert'])) {
      $description = $_GET['description'];
      $publish_date = $_GET['publish_date'];
      $publish_type = $_GET['publish_type'];
-     $author = $_GET['author_id'];
+     //$author = $_GET['author_id'];
      $media = $_GET['media_id'];
+     $fk_publisher_id = $_GET['fk_publisher_id'];
+     $author_firstName = $_GET['author_firstName'];
+     $author_lastName = $_GET['author_lastName'];
   
      $sql = "INSERT INTO library (
-      fk_author_id, 
       fk_media_status_id,
       title, 
       isbn_code, 
       lib_description, 
       publish_date, 
       lib_type) 
-      VALUES (
-       $author, 
+      VALUES ( 
        $media, 
       '$title',
       '$isbn',
@@ -29,6 +30,19 @@ if (isset($_GET['insert'])) {
       '$publish_date',
       '$publish_type'
       );";
+
+    $sql = "INSERT INTO authors (
+      author_firstName,
+      author_lastName,
+      fk_publisher_id) 
+      VALUES (
+     '$author_firstName',
+      '$author_lastName',
+      $fk_publisher_id
+      );";
+
+
+
 ?>
 <!doctype html>
 <html lang="en">

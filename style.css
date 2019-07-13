@@ -1,11 +1,4 @@
-
-.fieldset {
-    margin: auto;
-     margin-top: 100px;
-    width: 50% ;
-}
-
-.table,
- tr, th  {
-    padding-top: 20px;
+body{
+    background-color: cornflowerblue;
+    margin-top: 50px;
 }

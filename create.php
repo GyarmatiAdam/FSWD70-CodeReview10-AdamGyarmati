@@ -19,13 +19,36 @@
 <fieldset >
 <form method="GET" enctype="multipart/form-data" action="actions/a_create.php"  autocomplete="off">
                 <div class="form-group">
-                    <input type="number" class="form-control" name="author_id" placeholder="Author"><br>
-                    <input type="number" class="form-control" name="media_id" placeholder="Media"><br>
-                    <input type="text" class="form-control" name="title" placeholder="Title"><br>
-                    <input type="text" class="form-control" name="isbn" placeholder="ISBN 1111-11-11-1111-11-11"><br>
-                    <input type="text" class="form-control" name="description" placeholder="Description"><br>
-                    <input type="date" class="form-control" name="publish_date" placeholder="Date"><br>
-                    <input type="text" class="form-control" name="publish_type" placeholder="Type BOOK/DVD/CD"><hr>
+
+                        <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Publishers:</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected>Select One</option>
+                            <option name="fk_publisher_id" value="<?php $fk_publisher_id=1; ?>">Big Book Publisher</option>
+                            <option name="fk_publisher_id" value="2">Small Book Publisher</option>
+                            <option name="fk_publisher_id" value="3">Rich CD Publisher</option>
+                            <option name="fk_publisher_id" value="4">Poor CD Publisher</option>
+                            <option name="fk_publisher_id" value="5">Amazing DVD Publisher</option>
+                            <option name="fk_publisher_id" value="6">General DVD Publisher</option>
+                        </select>
+                        </div>
+
+                    <!-- </li> -->
+                    <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Author name</span>
+                    </div>
+                    <input type="text" name="author_firstName" aria-label="First name" class="form-control">
+                    <input type="text" name="author_lastName" aria-label="Last name" class="form-control">
+                    </div><br>
+                    <input type="number" class="form-control" name="media_id" placeholder="Media" required><br>
+                    <input type="text" class="form-control" name="title" placeholder="Title" required><br>
+                    <input type="text" class="form-control" name="isbn" placeholder="ISBN 1111-11-11-1111-11-11" required><br>
+                    <input type="text" class="form-control" name="description" placeholder="Description" required><br>
+                    <input type="date" class="form-control" name="publish_date" placeholder="Date" required><br>
+                    <input type="text" class="form-control" name="publish_type" placeholder="Type BOOK/DVD/CD" required><hr>
                     <input type="file" name="fileToUpload" id="fileToUpload">
 
                     <button type="submit" name="insert" class="btn btn-primary">Insert</button>
