@@ -18,52 +18,42 @@
     <div class="col-sm-8">
 
 <form method="GET" enctype="multipart/form-data" action="actions/a_create.php"  autocomplete="off">
-                <div class="form-group">
-                        <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="inputGroupSelect01">Publishers:</label>
-                        </div>
-                        <select class="custom-select" name="fk_publisher_id">
-                            <option value="">Select One</option>
-                            <option value="1">Big Book Publisher</option>
-                            <option value="2">Small Book Publisher</option>
-                            <option value="3">Rich CD Publisher</option>
-                            <option value="4">Poor CD Publisher</option>
-                            <option value="5">Amazing DVD Publisher</option>
-                            <option value="6">General DVD Publisher</option>
-                        </select>
+    <div class="form-group">
+    <div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Publishers:</label>
+    </div>
+    <select class="custom-select" name="fk_publisher_id">
+        <option value="">Select One</option>
+        <option value="1">Big Book Publisher</option>
+        <option value="2">Small Book Publisher</option>
+        <option value="3">Rich CD Publisher</option>
+        <option value="4">Poor CD Publisher</option>
+        <option value="5">Amazing DVD Publisher</option>
+        <option value="6">General DVD Publisher</option>
+    </select>
 
 
-<!--  
-        <select class="custom-select" project="publisherList" id="publisherList" name="publisherList">
-         <option value = "<?php echo $value0; ?>"<?php echo ($value0 == $submittedValue)?" SELECTED":""?>></option>
-         <option value = "<?php echo $value1; ?>"<?php echo ($value0 == $submittedValue)?" SELECTED":""?>>Big Book Publisher</option>
-         <option value = "<?php echo $value2; ?>"<?php echo ($value0 == $submittedValue)?" SELECTED":""?>>Small Book Publisher</option>
-         <option value = "<?php echo $value3; ?>"<?php echo ($value0 == $submittedValue)?" SELECTED":""?>>Rich CD Publisher</option>
-         <option value = "<?php echo $value4; ?>"<?php echo ($value0 == $submittedValue)?" SELECTED":""?>>Poor CD Publisher</option>
-         <option value = "<?php echo $value5; ?>"<?php echo ($value0 == $submittedValue)?" SELECTED":""?>>Amazing DVD Publisher</option>
-         <option value = "<?php echo $value6; ?>"<?php echo ($value0 == $submittedValue)?" SELECTED":""?>>General DVD Publisher</option>
-        </select>-->
     </div> 
     </div> 
 
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">Author name</span>
-                <input type="text" name="author_firstName" aria-label="First name" class="form-control">
-                <input type="text" name="author_lastName" aria-label="Last name" class="form-control">
-            </div>
-            </div> <br>
-            <div class="form-group">
-                    <input type="number" class="form-control" name="media_id" placeholder="Media" required><br>
-                    <input type="text" class="form-control" name="title" placeholder="Title" required><br>
-                    <input type="text" class="form-control" name="isbn" placeholder="ISBN 1111-11-11-1111-11-11" required><br>
-                    <input type="text" class="form-control" name="description" placeholder="Description" required><br>
-                    <input type="date" class="form-control" name="publish_date" placeholder="Date" required><br>
-                    <input type="text" class="form-control" name="publish_type" placeholder="Type BOOK/DVD/CD" required><hr>
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                    <button type="submit" name="insert" class="btn btn-primary">Insert</button>
-            </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Author name</span>
+            <input type="text" name="author_firstName" aria-label="First name" class="form-control">
+            <input type="text" name="author_lastName" aria-label="Last name" class="form-control">
+        </div>
+        </div> <br>
+        <div class="form-group">
+            <input type="number" class="form-control" name="media_id" placeholder="Media" required><br>
+            <input type="text" class="form-control" name="title" placeholder="Title" required><br>
+            <input type="text" class="form-control" name="isbn" placeholder="ISBN 1111-11-11-1111-11-11" required><br>
+            <input type="text" class="form-control" name="description" placeholder="Description" required><br>
+            <input type="date" class="form-control" name="publish_date" placeholder="Date" required><br>
+            <input type="text" class="form-control" name="publish_type" placeholder="Type BOOK/DVD/CD" required><hr>
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <button type="submit" name="insert" class="btn btn-primary">Insert</button>
+        </div>
 </form>
         </div>
         <div class="col-sm-2">
