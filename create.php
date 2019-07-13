@@ -44,8 +44,14 @@
             <input type="text" name="author_lastName" aria-label="Last name" class="form-control">
         </div>
         </div> <br>
+
         <div class="form-group">
-            <input type="number" class="form-control" name="media_id" placeholder="Media" required><br>
+            <select class="form-control custom-select" name="media_id">
+            <option value="">Status</option>
+            <option value="1">Available</option>
+            <option value="2">Unavailable</option><br>
+            </select><hr>
+
             <input type="text" class="form-control" name="title" placeholder="Title" required><br>
             <input type="text" class="form-control" name="isbn" placeholder="ISBN 1111-11-11-1111-11-11" required><br>
             <input type="text" class="form-control" name="description" placeholder="Description" required><br>

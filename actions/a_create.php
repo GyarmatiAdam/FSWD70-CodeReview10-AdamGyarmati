@@ -14,6 +14,7 @@ if (isset($_GET['insert'])) {
      $fk_publisher_id = $_GET['fk_publisher_id'];
      $author_firstName = $_GET['author_firstName'];
      $author_lastName = $_GET['author_lastName'];
+    
   
      $sql = "INSERT INTO library (
       fk_media_status_id,
@@ -40,8 +41,14 @@ if (isset($_GET['insert'])) {
       '$author_lastName',
       $fk_publisher_id
       );";
+  
+  
 
-
+  if($media !== 1){
+    $media_status = 'Available';
+  } else{
+    $media_status = 'Unavailable';
+  }
 
 ?>
 <!doctype html>
@@ -86,7 +93,7 @@ if (isset($_GET['insert'])) {
         <th scope="col">ISBN</th>
         <th scope="col">Type</th>
         <th scope="col">Publish Date</th>
-        <th scope="col">Media</th>
+        <th scope="col">Status</th>
         <th scope="col">Author</th>
         <th scope="col">description</th>
 
@@ -101,7 +108,7 @@ if (isset($_GET['insert'])) {
                   echo "<td scope='row'>".$isbn . "</td>";
                   echo "<td scope='row'>".$publish_type . "</td>";
                   echo "<td scope='row'>".$publish_date. "</td>";
-                  echo "<td scope='row'>".$media. "</td>";
+                  echo "<td scope='row'>". $media_status ."</td>";
                   echo "<td scope='row'>".$author_firstName. "</td>";
                   echo "<td scope='row'>".$author_lastName. "</td></th></tr>";
                   echo "<tr><th colspan='8'>Description</th></tr>

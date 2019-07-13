@@ -28,7 +28,10 @@
      */
         $sql = "SELECT * FROM library 
         RIGHT JOIN authors
-        ON library.fk_author_id = authors.author_id;" ;
+        ON library.fk_author_id = authors.author_id
+        RIGHT JOIN media_status
+        ON library.fk_media_status_id = media_status.media_status_id;" ;
+        
         $result = $connect->query($sql);
      
             if($result->num_rows > 0) {
@@ -41,7 +44,7 @@
         <tr>
         <th scope="col">ID</th>
         <th scope="col">Author</th>
-        <th scope="col">Media</th>
+        <th scope="col">Status</th>
         <th scope="col">Title</th>
         <th scope="col">ISBN</th>
         <th scope="col">Publish Date</th>
@@ -54,7 +57,7 @@
     <?php
             echo "<tr><th scope='1'>".$row['library_id'] . "</th>";
             echo "<td scope='row'>".$row['author_firstName'] . "<br>".$row['author_lastName'] . "</td>";
-            echo "<td scope='row'>".$row['fk_media_status_id'] . "</td>";
+            echo "<td scope='row'>".$row['media_status_desc'] . "</td>";
             echo "<td scope='row'>".$row['title'] . "</td>";
             echo "<td scope='row'>".$row['isbn_code'] . "</td>";
             echo "<td scope='row'>".$row['publish_date'] . "</td>";
