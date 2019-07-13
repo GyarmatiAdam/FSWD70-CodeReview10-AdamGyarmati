@@ -34,25 +34,40 @@
     ?>
     <!--tables-->
     <table class="table table-striped table-dark">
-    <tbody>
+    
     <thead>
         <tr>
         <th scope="col">ID</th>
+        <th scope="col">Author</th>
+        <th scope="col">Media</th>
         <th scope="col">Title</th>
         <th scope="col">ISBN</th>
+        <th scope="col">Publish Date</th>
         <th scope="col">Type</th>
+
+
         </tr>
     </thead>
+    <tbody>
     <?php
             echo "<tr><th scope='row'>".$row['library_id'] . "</th>";
-            echo "<th scope='row'>".$row['title'] . "</th>";
-            echo "<th scope='row'>".$row['isbn_code'] . "</th>";
-            echo "<th scope='row'>".$row['lib_type'] . "
-            <td>
+            echo "<td scope='row'>".$row['fk_author_id'] . "</td>";
+            echo "<td scope='row'>".$row['fk_media_status_id'] . "</td>";
+            echo "<td scope='row'>".$row['title'] . "</td>";
+            echo "<td scope='row'>".$row['isbn_code'] . "</td>";
+            echo "<td scope='row'>".$row['publish_date'] . "</td>";
+            echo "<td scope='row'>".$row['lib_type'] . "</td></th></tr>";
+            echo "<tr><th colspan='8'>Description</th></tr>
+            <tr><td colspan='8'>".$row['lib_description'] . "</td></tr>
+            
+            <tr><td>
+            <div class='btn-group mr-2' role='group'>
             <a href='update.php?id=" .$row['library_id']."'><button class='btn btn-warning' type='button'>Edit</button></a>
             <a href='delete.php?id=" .$row['library_id']."'><button class='btn btn-danger' type='button'>Delete</button></a>
-            </td>
-        </th></tr>";
+            </div> 
+            </td></tr>";
+        
+
             }
         } else  {
             echo  "<tr><td colspan='5'><center>No Data Avaliable</center></td></tr>";

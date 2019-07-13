@@ -1,6 +1,6 @@
 <?php 
 
-$localhost = "127.0.0.1"; 
+$localhost = "localhost"; 
 $username = "root"; 
 $password = ""; 
 $dbname = "cr10_adam_gyarmati_biglibrary"; 

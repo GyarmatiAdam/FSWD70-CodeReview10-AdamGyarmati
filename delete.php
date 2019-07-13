@@ -1,17 +1,15 @@
 <?php 
 
 require_once 'actions/db_connect.php';
-
-
 if (isset($_GET['library_id'])) {
+   
    $library = isset($_GET['library_id']);
-
+   
    $sql = "SELECT * FROM library WHERE library_id = {$library}" ;
    $result = $connect->query($sql);
-
    $data = $result->fetch_assoc();
+   
    $connect->close();
-
 ?>
 
 <!DOCTYPE html>
@@ -52,8 +50,9 @@ if (isset($_GET['library_id'])) {
 
 </body>
 </html>
+
    <?php
-   } else  {
-      echo  "<tr><td colspan='5'><center>No Data Avaliable</center></td></tr>";
-   }
+} else  {
+   echo  "<tr><td colspan='5'><center>No Data Avaliable</center></td></tr>";
+ }
    ?>
