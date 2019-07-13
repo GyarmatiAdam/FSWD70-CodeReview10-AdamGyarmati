@@ -37,7 +37,7 @@
     </div> 
     </div> 
 
-    <div class="input-group">
+    <div class="form-group">
         <div class="input-group-prepend">
             <span class="input-group-text">Author name</span>
             <input type="text" name="author_firstName" aria-label="First name" class="form-control">

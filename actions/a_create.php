@@ -110,7 +110,7 @@ if (isset($_GET['insert'])) {
       
 
      } else  {
-          echo "Error " . $sql . ' ' . $connect->connect_error;
+          echo "<p class='alert alert-success' role='alert'>Error " . $sql . ' ' . $connect->connect_error. "</P>";
      }
   
      $connect->close();
