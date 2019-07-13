@@ -27,8 +27,8 @@ if (isset($_POST['insert'])) {
       '$isbn',
       '$description',
       '$publish_date',
-      '$publish_type';
-      )";
+      '$publish_type'
+      );";
       if($connect->query($sql) === TRUE) {
           echo "<p>New Record Successfully Created</p>" ;
           echo "<a href='../create.php'><button type='button'>Back</button></a>";
@@ -39,6 +39,4 @@ if (isset($_POST['insert'])) {
   
      $connect->close();
   }
-?>
-
 ?>
