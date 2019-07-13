@@ -1,19 +1,17 @@
 <?php 
-/** contains an HTML form to update the user’s data, 
- * but before we update user’s data we need to display 
- * existing data for the selected user. */
+
 require_once 'actions/db_connect.php';
 
-if ($_GET['id']) {
-   $id = $_GET['id'];
 
-   $sql = "SELECT * FROM user WHERE id = {$id}" ;
+if (isset($_POST['library_id'])) {
+   $library = $_POST['library_id'];
+
+   $sql = "SELECT * FROM library WHERE library_id = {$library}" ;
    $result = $connect->query($sql);
 
    $data = $result->fetch_assoc();
-
    $connect->close();
-
+   
 ?>
 
 <!DOCTYPE html>
@@ -36,36 +34,32 @@ if ($_GET['id']) {
 </head>
 <body>
 
-<fieldset>
-   <legend>Update user</legend>
+<fieldset >
+<form method="POST" enctype="multipart/form-data" action="actions/a_update.php"  autocomplete="off">
+                <div class="form-group">
+                    <input type="number" name="author_id" placeholder="Author" value= "<?php echo isset($data['fk_author_id'])?>"><br>
+                    <input type="number"  name="media_id" placeholder="Media" value="<?php echo isset($data['fk_media_status_id'])?>"><br>
+                    <input type="text"  name="title" placeholder="Title" value="<?php echo isset($data['title'])?>"><br>
+                    <input type="text"  name="isbn" placeholder="ISBN 1111-11-11-1111-11-11" value="<?php echo isset($data['isbn_code'])?>"><br>
+                    <input type="text"  name="description" placeholder="Description" value="<?php echo isset($data['lib_description'])?>"><br>
+                    <input type="date"  name="publish_date" placeholder="Date" value="<?php echo isset($data['publish_date'])?>"><br>
+                    <input type="text"  name="publish_type" placeholder="Type BOOK/DVD/CD" value="<?php echo isset($data['lib_type '])?>"><hr>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
 
-   <form action="actions/a_update.php"  method="post">
-       <table  cellspacing="0" cellpadding= "0">
-           <tr>
-               <th>First Name</th>
-               <td><input type="text"  name="first_name" placeholder ="First Name" value="<?php echo $data['first_name'] ?>"  /></td>
-           </tr >     
-           <tr>
-               <th>Last Name</th>
-               <td><input type= "text" name="last_name"  placeholder="Last Name" value ="<?php echo $data['last_name'] ?>" /></td >
-           </tr>
-           <tr>
-               <th >Date of birth</th>
-               <td><input type ="text" name= "date_of_birth" placeholder= "Date of birth" value= "<?php echo $data['date_of_birth'] ?>" /></td>
-           </tr> 
-           <tr>
-               <input type= "hidden" name= "id" value= "<?php echo $data['id']?>" />
-               <td><button  type= "submit">Save Changes</button ></td>
-               <td><a  href= "index.php"><button  type="button" >Back</button ></a ></td >
-           </tr>
-       </table>
-   </form >
+                    <tr>
+                    <input type= "hidden" name= "library_id" value= "<?php echo isset($data['library_id'])?>" />
+                    <td><button  type= "submit">Save Changes</button ></td>
+                    <td><a  href= "index.php"><button  type="button" >Back</button ></a ></td >
+                    </tr>
+                </form>
+
 
 </fieldset >
 
 </body >
 </html >
-
 <?php 
+
 }
+
 ?>

@@ -49,9 +49,11 @@
             echo "<th scope='row'>".$row['title'] . "</th>";
             echo "<th scope='row'>".$row['isbn_code'] . "</th>";
             echo "<th scope='row'>".$row['lib_type'] . "
-            <button type='submit' name='delete' class='btn btn-primary'>Delete</button>
-            <button type='submit' name='update' class='btn btn-primary'>Update</button>
-            </th></tr>";
+            <td>
+            <a href='update.php?id=" .$row['library_id']."'><button type='button'>Edit</button></a>
+            <a href='delete.php?id=" .$row['library_id']."'><button type='button'>Delete</button></a>
+            </td>
+        </th></tr>";
             }
         } else  {
             echo  "<tr><td colspan='5'><center>No Data Avaliable</center></td></tr>";
