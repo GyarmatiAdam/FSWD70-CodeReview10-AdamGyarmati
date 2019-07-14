@@ -18,7 +18,12 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-2">
-    <a href= "create.php"><button class="position-fixed btn btn-primary" >Insert Data</button></a>
+        <div>
+            <a href= "create.php"><button class="position-fixed btn btn-primary" >Insert Media</button></a>
+        </div><br><br><br>
+        <div>         
+            <a href= "create_author.php"><button class="position-fixed btn btn-primary" >Insert Author</button></a>
+        </div>
     </div>
     <div class="col-sm-8">
 
