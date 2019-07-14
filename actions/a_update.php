@@ -3,7 +3,17 @@
 require_once 'db_connect.php';
 
 
-if ($_GET) {
+// $title ="";
+// $isbn = "";
+// $description = "";
+// $publish_date = "";
+// $publish_type ="";
+// $author = "";
+// $media = "";
+// $library = "";
+
+if($_GET){
+
      $title = $_GET['title'];
      $isbn = $_GET['isbn'];
      $description = $_GET['description'];
@@ -12,7 +22,8 @@ if ($_GET) {
      $author = $_GET['author_id'];
      $media = $_GET['media_id'];
      $library = $_GET['library_id'];
-  
+     echo "What is wrong?";
+
      $sql = "UPDATE library SET (
       fk_author_id = $author,
       fk_media_status_id = $media, 
@@ -36,7 +47,7 @@ if ($_GET) {
 </head>
 <body style="margin-top: 5rem">
 <?php 
-    require_once 'navbar.php';
+    //require_once 'navbar.php';
 ?> 
 
 <div class="container">

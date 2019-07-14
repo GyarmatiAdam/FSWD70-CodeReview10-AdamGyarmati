@@ -1,4 +1,4 @@
- <?php
+<?php
     require_once 'actions/db_connect.php';
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
-    <table id="" class="media_table table-striped table-dark">
+    <table  class="media_table table-striped table-dark">
     
     <thead>
         <tr>
@@ -37,42 +37,46 @@
 ?>
     </tbody>
     </table>
-
     </div>
     <div class="col-sm-8">
 
-<form method="GET" enctype="multipart/form-data" action="actions/a_create.php"  autocomplete="off">
+<form method="GET" enctype="multipart/form-data" action="actions/a_create_author.php"  autocomplete="off">
+    <div class="form-group">
+    <div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Publishers:</label>
+    </div>
+    <select class="custom-select" name="fk_publisher_id">
+        <option value="">Select One</option>
+        <option value="1">Big Book Publisher</option>
+        <option value="2">Small Book Publisher</option>
+        <option value="3">Rich CD Publisher</option>
+        <option value="4">Poor CD Publisher</option>
+        <option value="5">Amazing DVD Publisher</option>
+        <option value="6">General DVD Publisher</option>
+    </select>
 
-        <div class="form-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text" required>Author ID</span>
-                <input type="number" name="fk_author_id" aria-label="" placeholder="ID" class="form-control">
-            </div>
+
+    </div> 
+    </div> 
+
+    <div class="form-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" required>Author name</span>
+            <input type="text" name="author_firstName" aria-label="First name" placeholder="First Name" class="form-control">
+            <input type="text" name="author_lastName" aria-label="Last name" placeholder="Last Name" class="form-control">
+        </div>
         </div> <br>
 
         <div class="form-group">
-            <select class="form-control custom-select" name="fk_media_status_id">
-            <option value="" required>Status</option>
-            <option value="1" required>Available</option>
-            <option value="2" required>Unavailable</option><br>
-            </select><hr>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" name="title" placeholder="Title" required><br>
-            <input type="text" class="form-control" name="isbn" placeholder="ISBN 1111-11-11-1111-11-11" required><br>
-            <input type="text" class="form-control" name="description" placeholder="Description" required><br>
-            <input type="date" class="form-control" name="publish_date" placeholder="Date" required><br>
-        </div>
-        <div class="form-group">
-            <select class="form-control custom-select" name="lib_type">
-            <option value="">Status</option>
-            <option value="BOOK">BOOK</option>
-            <option value="CD">CD</option>
-            <option value="DVD">DVD</option><br>
+            <select class="form-control custom-select" name="media">
+            <option value="">Occupation</option>
+            <option value="1">Actor</option>
+            <option value="2">Singer</option>
+            <option value="3">Writer</option><br>
             </select><hr>
         </div>
 
-            <!-- <input type="text" class="form-control" name="publish_type" placeholder="Type BOOK/DVD/CD" required><hr> -->
             <input type="file" name="fileToUpload" id="fileToUpload">
             <button type="submit" name="insert" class="btn btn-primary">Insert</button>
         </div>

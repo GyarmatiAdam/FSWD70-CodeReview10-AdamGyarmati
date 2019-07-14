@@ -13,10 +13,8 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
         <a class="nav-item nav-link" href="../index.php">HOME</a>
-        <a class="nav-item nav-link" href="#">BOOK</a>
-        <a class="nav-item nav-link" href="#">CD</a>
-        <a class="nav-item nav-link" href="#">DVD</a>
-        <a class="nav-item nav-link" href="../create.php">INSERT DATA</a>
+        <a class="nav-item nav-link" href="../create.php">INSERT MEDIA</a>
+        <a class="nav-item nav-link" href="../create_author.php">INSERT AUTHOR</a>
         </div>
     </div>
         <h3>The Big Library</h3>

@@ -1,38 +1,51 @@
 <?php 
-
 require_once 'db_connect.php';
 
 if (isset($_GET['insert'])) {
 
-     $title = $_GET['title'];
-     $isbn = $_GET['isbn'];
-     $description = $_GET['description'];
-     $publish_date = $_GET['publish_date'];
-     $lib_type = $_GET['lib_type'];
-     $author = $_GET['fk_author_id'];
-     $media = isset($_GET['fk_media_status_id']);
+    $fk_publisher_id = $_GET['fk_publisher_id'];
+    $author_firstName = $_GET['author_firstName'];
+    $author_lastName = $_GET['author_lastName'];
+    $occupation = $_GET['media'];
 
-  
-     $sql = "INSERT INTO library (
-      fk_author_id,
-      fk_media_status_id,
-      title, 
-      isbn_code, 
-      lib_description, 
-      publish_date, 
-      lib_type
-      ) 
-      VALUES ( 
-      $author,
-      $media, 
-      '$title',
-      '$isbn',
-      '$description',
-      '$publish_date',
-      '$lib_type'
-      );";
+    if($fk_publisher_id !==1){
+      $publisher_name = "Big Book Publisher";
+    } elseif($fk_publisher_id !==2){
+      $publisher_name = "Small Book Publisher";
+    } elseif($fk_publisher_id !==3){
+      $publisher_name = "Rich CD Publisher";
+    } elseif($fk_publisher_id !==4){
+      $publisher_name = "Poor CD Publisher";
+    } elseif($fk_publisher_id !==5){
+      $publisher_name = "Amazing DVD Publisher";
+    }elseif($fk_publisher_id !==5){
+      $publisher_name = "General DVD Publisher";
+    }else{
+      echo "Something went wrong";
+    }
+    
+ 
+    if($occupation !== 1){
+      $occupation = 'Actor';
+    }
+    elseif($occupation !== 2){
+      $occupation= 'Singer';
+    } else{
+      $occupation = 'Writer';
+    }
 
-  
+
+    $sql = "INSERT INTO authors (
+      fk_publisher_id,
+      author_firstName,
+      author_lastName,
+      media) 
+      VALUES (
+      $fk_publisher_id,
+      '$author_firstName',
+      '$author_lastName',
+      '$occupation'
+      );"; 
 
 ?>
 <!doctype html>
@@ -55,6 +68,7 @@ if (isset($_GET['insert'])) {
   <div class="row">
     <div class="col-sm-2">
     <?php
+
           echo "<a href='../create.php'><button class='btn btn-dark' type='button'>Back</button></a>";
           echo "<a href='../index.php'><button class='btn btn-warning' type='button'>Home</button></a>";
      
@@ -74,27 +88,16 @@ if (isset($_GET['insert'])) {
     
     <thead>
         <tr>
-        <th scope="col">Title</th>
-        <th scope="col">ISBN</th>
-        <th scope="col">Type</th>
-        <th scope="col">Publish Date</th>
-        <th scope="col">Status</th>
-
+        <th scope="col">Publisher</th>
         </tr>
+
     </thead>
     <tbody>
           <?php
-                  echo "<tr><th scope='1'>".$title . "</th>";
-                  echo "<td scope='row'>".$isbn . "</td>";
-                  echo "<td scope='row'>".$lib_type . "</td>";
-                  echo "<td scope='row'>".$publish_date. "</td>";
-                  echo "<td scope='row'>". $media ."</td></th></tr>";
-
-                  echo "<tr><th colspan='8'>Description</th></tr>
-                  <tr class='text-justify'><td colspan='8'>".$description . "</td></tr>";
-
-      
-
+                echo "<tr><td colspan='8'>".$publisher_name . "</td></tr>";
+                echo "<tr><th colspan='4'>Author</th><th colspan='4'>Occupation</th></tr>
+                <tr><td colspan='2'>".$author_firstName . "</td><td colspan='1'>".$author_lastName . "</td><td colspan='5'>".$occupation . "</td></tr>";
+    
      } else  {
           echo "<p class='alert alert-success' role='alert'>Error " . $sql . ' ' . $connect->connect_error. "</P>";
      }
@@ -102,6 +105,7 @@ if (isset($_GET['insert'])) {
      $connect->close();
   }
 ?>
+    </tbody>
        </div>
         <div class="col-sm-2">
 

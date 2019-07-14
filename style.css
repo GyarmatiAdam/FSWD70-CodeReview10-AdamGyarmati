@@ -1,4 +1,10 @@
 body{
+    position: relative;
     background-color: cornflowerblue;
     margin-top: 50px;
+}
+.media_table{
+    position:absolute;
+    top: 0px;
+    border: 3px solid #73AD21;
 }
