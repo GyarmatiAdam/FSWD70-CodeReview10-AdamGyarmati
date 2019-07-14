@@ -3,10 +3,22 @@ require_once 'db_connect.php';
 
 if (isset($_GET['insert'])) {
 
-    $fk_publisher_id = $_GET['fk_publisher_id'];
-    $author_firstName = $_GET['author_firstName'];
-    $author_lastName = $_GET['author_lastName'];
-    $occupation = $_GET['media'];
+    $fk_publisher_id = trim($_GET['fk_publisher_id']);
+    $fk_publisher_id = strip_tags($_GET['fk_publisher_id']);
+    $fk_publisher_id = htmlspecialchars($_GET['fk_publisher_id']);
+
+    $author_firstName = trim($_GET['author_firstName']);
+    $author_firstName = strip_tags($_GET['author_firstName']);
+    $author_firstName = htmlspecialchars($_GET['author_firstName']);
+
+    $author_lastName = trim($_GET['author_lastName']);
+    $author_lastName = strip_tags($_GET['author_lastName']);
+    $author_lastName = htmlspecialchars($_GET['author_lastName']);
+
+    $occupation = trim($_GET['media']);
+    $occupation = strip_tags($_GET['media']);
+    $occupation = htmlspecialchars($_GET['media']);
+
 
     if($fk_publisher_id !==1){
       $publisher_name = "Big Book Publisher";

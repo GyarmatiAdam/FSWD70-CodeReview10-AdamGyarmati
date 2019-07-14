@@ -4,13 +4,37 @@ require_once 'db_connect.php';
 
 if (isset($_GET['insert'])) {
 
-     $title = $_GET['title'];
-     $isbn = $_GET['isbn'];
-     $description = $_GET['description'];
-     $publish_date = $_GET['publish_date'];
+     $title = trim($_GET['title']);
+     $title = strip_tags($_GET['title']);
+     $title = htmlspecialchars($_GET['title']);
+
+     $isbn = trim($_GET['isbn']);
+     $isbn = strip_tags($_GET['isbn']);
+     $isbn = htmlspecialchars($_GET['isbn']);
+
+     $description = trim($_GET['description']);
+     $description = strip_tags($_GET['description']);
+     $description = htmlspecialchars($_GET['description']);
+
+     $publish_date = trim($_GET['publish_date']);
+     $publish_date = strip_tags($_GET['publish_date']);
+     $publish_date = htmlspecialchars($_GET['publish_date']);
+
      $lib_type = $_GET['lib_type'];
-     $author = $_GET['fk_author_id'];
+
+     $author = trim($_GET['fk_author_id']);
+     $author = strip_tags($_GET['fk_author_id']);
+     $author = htmlspecialchars($_GET['fk_author_id']);
+
      $media = isset($_GET['fk_media_status_id']);
+     
+     if($media !== 1){
+      $media_status = "Available";
+     }elseif($media !== 2){
+      $media_status = "Reserved";
+     }else{
+       echo "Something went wrong";
+     }
 
   
      $sql = "INSERT INTO library (
@@ -88,7 +112,7 @@ if (isset($_GET['insert'])) {
                   echo "<td scope='row'>".$isbn . "</td>";
                   echo "<td scope='row'>".$lib_type . "</td>";
                   echo "<td scope='row'>".$publish_date. "</td>";
-                  echo "<td scope='row'>". $media ."</td></th></tr>";
+                  echo "<td scope='row'>". $media_status ."</td></th></tr>";
 
                   echo "<tr><th colspan='8'>Description</th></tr>
                   <tr class='text-justify'><td colspan='8'>".$description . "</td></tr>";
