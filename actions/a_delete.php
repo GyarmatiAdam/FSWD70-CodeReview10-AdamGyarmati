@@ -25,12 +25,12 @@ require_once 'db_connect.php';
     </div>
     <div class="col-sm-8">
 <?php
-if ($_GET) {
-   $library = isset($_GET['library_id']);
+if ($_POST) {
+   $library = $_POST['library_id'];
 
    $sql = "DELETE FROM library WHERE library_id = {$library};";
     if($connect->query($sql) === TRUE) {
-       echo "<p class='alert alert-success' role='alert'>The media was successfully deleted!!</p>" ;
+       echo "<p class='alert alert-success' role='alert'>The media was successfully deleted!!</p>";
 
    } else {
        echo "Error deletingrecord : " . $connect->error;

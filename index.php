@@ -72,8 +72,8 @@
             
             <tr><td>
             <div class='btn-group mr-2' role='group'>
-            <a href='update.php?id=" .$row['library_id']."'><button class='btn btn-warning' type='button'>Edit</button></a>
-            <a href='delete.php?id=" .$row['library_id']."'><button class='btn btn-danger' type='button'>Delete</button></a>
+            <a href='update.php?author_id=" .$row['author_id']."'><button class='btn btn-warning' type='button'>Edit</button></a>
+            <a href='delete.php?library_id=" .$row['library_id']."'><button class='btn btn-danger' type='button'>Delete</button></a>
             </div> 
             </td></tr>";
         
